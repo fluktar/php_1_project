@@ -33,17 +33,17 @@ if (!empty($_GET['action'])) {
     <div class="container">
         <div class="menu">
             <ul>
-                <li><a href="/">Lista notatek</a></li>
-                <li><a href="/?action=create">Nowa notatka</a></li>
+                <li><a href="/phptesty/">Lista notatek</a></li>
+                <li><a href="/phptesty/?action=create">Nowa notatka</a></li>
             </ul>
         </div>
-        <div><?php
-                if ($action === 'create') :
-                    echo "nowa notatka";
-                else :
-                    echo "lista notatek";
-                endif;
-                ?></div>
+        <div>
+            <?php if ($action === 'create') : ?>
+                <h3>nowa notatka</h3>
+            <?php else : ?>
+                <h4>lista notatek</h4>
+            <?php endif; ?>
+        </div>
 
     </div>
     <div class="footer">
