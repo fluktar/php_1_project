@@ -13,7 +13,7 @@ const DEFAULT_ACTION = 'list';
 
 
 $action = $_GET['action'] ?? DEFAULT_ACTION;
-
+dump($action);
 $view = new View();
 
 $viewParams = [];
