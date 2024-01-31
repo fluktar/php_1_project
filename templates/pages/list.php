@@ -1,6 +1,8 @@
 <div>
 
-    <h4>lista notatek</h4>
-
+    <h3>lista notatek</h3>
+    <b><?php
+        echo $params['resultList'] ?? '';
+        ?></b>
 
 </div>
