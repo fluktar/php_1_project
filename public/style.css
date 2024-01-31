@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap&subset=latin-ext');
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap&subset=latin-ext");
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: #333;
   background-color: #ddd;
   margin: 0;
@@ -14,9 +14,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-
 }
-
 
 h1 {
   font-size: 44px;
@@ -50,43 +48,43 @@ form label {
   font-weight: normal;
 }
 
-form input[type=text],
-form input[type=date],
-form input[type=datetime],
-form input[type=number],
-form input[type=search],
-form input[type=time],
-form input[type=url],
-form input[type=email],
+form input[type="text"],
+form input[type="date"],
+form input[type="datetime"],
+form input[type="number"],
+form input[type="search"],
+form input[type="time"],
+form input[type="url"],
+form input[type="email"],
 textarea,
 select {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  border: 1px solid #BEBEBE;
+  border: 1px solid #bebebe;
   padding: 7px;
   margin: 0px;
-  -webkit-transition: all 0.30s ease-in-out;
-  -moz-transition: all 0.30s ease-in-out;
-  -ms-transition: all 0.30s ease-in-out;
-  -o-transition: all 0.30s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
   outline: none;
 }
 
-form input[type=text]:focus,
-form input[type=date]:focus,
-form input[type=datetime]:focus,
-form input[type=number]:focus,
-form input[type=search]:focus,
-form input[type=time]:focus,
-form input[type=url]:focus,
-form input[type=email]:focus,
+form input[type="text"]:focus,
+form input[type="date"]:focus,
+form input[type="datetime"]:focus,
+form input[type="number"]:focus,
+form input[type="search"]:focus,
+form input[type="time"]:focus,
+form input[type="url"]:focus,
+form input[type="email"]:focus,
 form textarea:focus,
 form select:focus {
-  -moz-box-shadow: 0 0 8px #88D5E9;
-  -webkit-box-shadow: 0 0 8px #88D5E9;
-  box-shadow: 0 0 8px #88D5E9;
-  border: 1px solid #88D5E9;
+  -moz-box-shadow: 0 0 8px #88d5e9;
+  -webkit-box-shadow: 0 0 8px #88d5e9;
+  box-shadow: 0 0 8px #88d5e9;
+  border: 1px solid #88d5e9;
 }
 
 form .field-long {
@@ -97,8 +95,8 @@ form .field-textarea {
   height: 100px;
 }
 
-form input[type=submit],
-form input[type=button] {
+form input[type="submit"],
+form input[type="button"] {
   background: cadetblue;
 
   border: none;
@@ -108,9 +106,9 @@ form input[type=button] {
   padding: 12 40px;
 }
 
-form input[type=submit]:hover,
-form input[type=button]:hover {
-  background: #4691A4;
+form input[type="submit"]:hover,
+form input[type="button"]:hover {
+  background: #4691a4;
   box-shadow: none;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
@@ -120,29 +118,29 @@ form .required {
   color: red;
 }
 
-form>div {
+form > div {
   font-weight: bold;
   margin-right: 20px;
   margin-bottom: 20px;
 }
 
-form>div:first-child {
+form > div:first-child {
   margin-bottom: 20px;
 }
 
-form>div:first-child>label:first-child {
+form > div:first-child > label:first-child {
   text-transform: uppercase;
-  font-weight: normal
+  font-weight: normal;
 }
 
-form>div:first-child>label:first-child>input {
+form > div:first-child > label:first-child > input {
   margin-left: 14px;
   font-family: montserrat;
   outline: none;
   font-size: 22px;
 }
 
-form>div:first-child>label:first-child>input:focus {
+form > div:first-child > label:first-child > input:focus {
   box-shadow: 0 0 0px 2px cadetblue;
 }
 
@@ -198,7 +196,6 @@ form>div:first-child>label:first-child>input:focus {
   color: #ddd;
 }
 
-
 .list {
   margin: 0;
 }
@@ -241,26 +238,24 @@ td {
   /* border-bottom: solid 1px rgba(255,255,255,0.1); */
 }
 
-tr>td:nth-child(1) {
+tr > td:nth-child(1) {
   width: 50px;
-
 }
 
-tr>th:nth-child(1) {
+tr > th:nth-child(1) {
   width: 50px;
-
 }
 
-tr>td:nth-child(2) {
+tr > td:nth-child(2) {
   width: 50%;
   text-align: left;
 }
 
-tr>th:nth-child(2) {
+tr > th:nth-child(2) {
   width: 50%;
 }
 
-tr>td:nth-child(3) {
+tr > td:nth-child(3) {
   font-style: italic;
 }
 
@@ -291,7 +286,7 @@ tr>td:nth-child(3) {
   flex-direction: row;
   justify-content: center;
   align-items: auto;
-  align-content: center
+  align-content: center;
 }
 
 .pagination li {
@@ -316,7 +311,7 @@ button {
 }
 
 button:hover {
-  background-color: #4691A4;
+  background-color: #4691a4;
 }
 
 form.note-form li label {

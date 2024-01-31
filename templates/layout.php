@@ -20,7 +20,7 @@
                 <li><a href="/phptesty/?action=create">Nowa notatka</a></li>
             </ul>
         </div>
-        <div>
+        <div class="page">
             <?php
             require_once("templates/pages/$page.php");
             ?>

@@ -15,6 +15,7 @@ const DEFAULT_ACTION = 'list';
 $action = $_GET['action'] ?? DEFAULT_ACTION;
 
 $view = new View();
+
 $viewParams = [];
 if ($action === 'create') {
     $page = 'create';
