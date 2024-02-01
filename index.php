@@ -13,14 +13,29 @@ const DEFAULT_ACTION = 'list';
 
 
 $action = $_GET['action'] ?? DEFAULT_ACTION;
-dump($action);
+// dump($action);
 $view = new View();
 
 $viewParams = [];
 if ($action === 'create') {
+
+
     $page = 'create';
-    $viewParams['resultCrate'] = "notatka została stworzona";
+
+    $createdNote = false;
+
+
+
+    if (!empty($_POST)) {
+        $createdNote = true;
+        $viewParams = [
+            'title' => $_POST['title'],
+            'description' => $_POST['description']
+        ];
+    }
+    $viewParams['createdNote'] = $createdNote;
 } else {
+
     $page = 'list';
     $viewParams['resultList'] = "nie udało się stworzyć notatki";
 }
