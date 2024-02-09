@@ -6,7 +6,7 @@ return
         'db' => [
 
             'host' => 'localhost',
-            'user' => 'user_note',
+            'user' => 'user_notes',
             'datebase' => 'notes',
             'password' => require_once('passwordBase.php'),
         ]
