@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App;
 
+require_once('exception/StorageException.php');
 
+use App\Exception\StorageException;
 use PDO;
 use Exception;
 
@@ -15,22 +17,20 @@ class Database
     {
         // dump($config);
 
-        $dsn = "mysql:dbname={$config['datebase']};host={$config['host']}";
-        // $connection = new PDO(
-        //     $dsn,
-        //     $config['user'],
-        //     $config['password']
-        // );
-
         try {
+            //code...
+            // $dsn = "mysql:dbname={$config['datebase']};host={$config['host']}";
+            // $connection = new PDO(
+            //     $dsn,
+            //     $config['user'],
+            //     $config['password']
+            // );
+
+
             $connection = new PDO("ddd");
-        } catch (Exception $e) {
-            dump($e);
-            exit('Błąd połączenia z bazą danych');
+            dump($connection);
+        } catch (\Throwable $e) {
+            throw new StorageException("Connection Error");
         }
-
-
-
-        dump($connection);
     }
 }

@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace App;
 
+require_once('src/exception/ConfigurationException.php');
+
+use App\Exception\ConfigurationException;
+
 require_once('src/database.php');
 require_once('src/view.php');
 class Controller
@@ -19,6 +23,12 @@ class Controller
     }
     public function __construct(array $request)
     {
+
+        if (empty(self::$configuration['db'])) {
+            throw new ConfigurationException('Configuration Error !');
+        }
+
+
         $db = new Database(self::$configuration['db']);
         $this->request = $request;
         $this->view = new View();
