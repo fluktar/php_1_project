@@ -51,8 +51,9 @@ class Controller
             'title' => $data['title'],
             'description' => $data['description']
           ];
+
           $this->database->createNote($noteData);
-          header('Location: /?before=created');
+          header('Location: /phptesty/?before=created');
         }
 
         break;
