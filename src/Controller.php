@@ -67,6 +67,7 @@ class Controller
         $page = 'list';
 
         $data = $this->getRequestGet();
+
         $viewParams['before'] = $data['before'] ?? null;
         break;
     }
