@@ -7,6 +7,7 @@ namespace App;
 require_once("src/Exception/ConfigurationException.php");
 
 use App\Exception\ConfigurationException;
+use App\Exception\NotFoundException;
 
 require_once("Database.php");
 require_once("View.php");
@@ -58,6 +59,21 @@ class Controller
 
         break;
       case 'show':
+        $page = 'show';
+
+        $data = $this->getRequestGet();
+        $noteId = (int) $data['id'];
+
+        try {
+          $this->database->getNote($noteId);
+        } catch (NotFoundException $th) {
+          header('Location: /phptesty/');
+        }
+
+
+
+        $this->database->getNote($noteId);
+
         $viewParams = [
           'title' => 'Moja notatka',
           'description' => 'Opis'
@@ -68,11 +84,19 @@ class Controller
 
         $data = $this->getRequestGet();
 
-        $viewParams['before'] = $data['before'] ?? null;
+        $notes = $this->database->getNotes();
+
+
+        $viewParams = [
+          'notes' => $this->database->getNotes(),
+          'before' => $data['before'] ?? null,
+        ];
+        // $viewParams['before'] = $data['before'] ?? null;
+
         break;
     }
 
-    $this->view->render($page, $viewParams);
+    $this->view->render($page, $viewParams ?? []);
   }
 
   private function action(): string
