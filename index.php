@@ -4,25 +4,36 @@ declare(strict_types=1);
 
 namespace App;
 
-require_once('src/utils/debug.php');
-require_once('src/view.php');
+use App\Exception\AppException;
+use App\Exception\ConfigurationException;
+use Throwable;
 
-// ini_set('display_errors', '0');
+require_once("src/Utils/debug.php");
+require_once("src/Controller.php");
+require_once("src/Exception/AppException.php");
 
-const DEFAULT_ACTION = 'list';
+$configuration = require_once("config/config.php");
 
+$request = [
+  'get' => $_GET,
+  'post' => $_POST
+];
 
-$action = $_GET['action'] ?? DEFAULT_ACTION;
-dump($action);
-$view = new View();
+try {
+  //$controller = new Controller($request);
+  //$controller->run();
 
-$viewParams = [];
-if ($action === 'create') {
-    $page = 'create';
-    $viewParams['resultCrate'] = "notatka została stworzona";
-} else {
-    $page = 'list';
-    $viewParams['resultList'] = "nie udało się stworzyć notatki";
+  Controller::initConfiguration($configuration);
+  (new Controller($request))->run();
+} catch (ConfigurationException $e) {
+  //mail('xxx@xxx.com', 'Errro', $e->getMessage());
+  echo '<h1>Wystąpił błąd w aplikacji</h1>';
+  echo 'Problem z applikacją, proszę spróbować za chwilę.';
+} catch (AppException $e) {
+  echo '<h1>Wystąpił błąd w aplikacji</h1>';
+  echo '<h3>' . $e->getMessage() . '</h3>';
+  // echo '<p>' . $e->getPrevious()->getMessage() . '</p>';
+} catch (Throwable $e) {
+  echo '<h1>Wystąpił błąd w aplikacji</h1>';
+  dump($e);
 }
-
-$view->render($action, $viewParams);
