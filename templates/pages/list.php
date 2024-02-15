@@ -1,5 +1,21 @@
 <div class="list">
   <section>
+
+    <div class="message">
+      <?php
+      if (!empty($params['error'])) {
+        switch ($params['error']) {
+          case 'missingNoteId':
+            echo 'Brak identyfikatora notatki !!!';
+            break;
+          case 'noteNotFound':
+            echo 'Notatka nie została znaleziona !!!';
+            break;
+        }
+      }
+      ?>
+    </div>
+
     <div class="message">
       <?php
       if (!empty($params['before'])) {
@@ -11,6 +27,7 @@
       }
       ?>
     </div>
+
     <div class="tbl-header">
       <table cellpadding="0" cellspacing="0" border="0">
         <thead>
@@ -32,7 +49,9 @@
               <td><?php echo htmlentities($note['title']) ?></td>
               <td><?php echo htmlentities($note['created']) ?></td>
               <td>
-                <a href="/phptesty/?action=show&id=<?php echo $note['id'] ?>">Pokaż</a>
+                <a href="/phptesty/?action=show&id=<?php echo $note['id'] ?>">
+                  <button>Szczegóły</button>
+                </a>
               </td>
             </tr>
           <?php endforeach; ?>
