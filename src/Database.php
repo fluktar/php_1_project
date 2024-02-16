@@ -69,6 +69,25 @@ class Database
       throw new StorageException('Nie udało się pobrać notatek', 400, $th);
     }
   }
+
+  public function getCount(): int
+  {
+    try {
+
+
+      $query = "SELECT count(*) AS cn FROM notes";
+
+      $result = $this->conn->query($query,);
+      $result =   $result->fetch(PDO::FETCH_ASSOC);
+      if ($result === false) {
+        throw new StorageException('Błąd przy próbie pobrania ilości notatek', 400);
+      }
+      return (int) $result["cn"];
+    } catch (Throwable $th) {
+      throw new StorageException('Nie udało się pobrać o liczbie notatek', 400, $th);
+    }
+  }
+
   public function createNote(array $data): void
   {
     try {

@@ -35,13 +35,15 @@
     </div>
 
     <?php
+
     $sort = $params['sort'] ?? [];
     $by = $sort['by'] ?? 'title';
     $order = $sort['order'] ?? 'desc';
 
     $page = $params['page'] ?? [];
     $size = $page['size'] ?? 10;
-    $number = $page['number'] ?? 1;
+    $currentPage = $page['number'] ?? 1;
+    $pages = $page['pages'] ?? 1;
     ?>
 
 
@@ -107,7 +109,36 @@
         </tbody>
       </table>
     </div>
+    <?php $paginationUrl =  "&pagesize=$size?sortby=$by&sortorder-$order";  ?>
+    <ul class="pagination">
+      <?php if ($currentPage !== 1) :  ?>
+        <li>
+          <a href="/phptesty/?page=<?php echo $currentPage - 1 . $paginationUrl ?>">
+            <button>
+              << </button>
+          </a>
+        </li>
+      <?php endif; ?>
+      <?php for ($i = 1; $i < $pages; $i++) { ?>
+        <li>
+          <a href="/phptesty/?page=<?php echo $i ?>&pagesize=<?php echo $size ?>?sortby=<?php echo $by ?>&sortorder=<?php echo $order  ?>">
+            <button>
+              <?php echo $i ?>
+            </button>
+          </a>
+        </li>
+      <?php } ?>
+      <?php if ($currentPage < $pages) : ?>
+        <li>
+          <a href="/phptesty/?page=<?php echo $currentPage + 1 . $paginationUrl ?>">
+            <button>
+              >>
+            </button>
+          </a>
+        </li>
+      <?php endif; ?>
 
+    </ul>
 
   </section>
 
