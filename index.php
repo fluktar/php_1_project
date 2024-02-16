@@ -17,7 +17,8 @@ use App\Request;
 use App\Exception\AppException;
 use App\Exception\ConfigurationException;
 
-$request = new Request($_GET, $_POST);
+// dump($_SERVER);
+$request = new Request($_GET, $_POST, $_SERVER);
 
 try {
   //$controller = new Controller($request);
