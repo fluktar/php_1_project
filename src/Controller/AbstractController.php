@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Request;
-use App\Model\Database;
+
 use App\View;
 
 require_once("src/Exception/ConfigurationException.php");
@@ -13,6 +13,7 @@ require_once("src/Exception/ConfigurationException.php");
 use App\Exception\ConfigurationException;
 use App\Exception\NotFoundException;
 use App\Exception\StorageException;
+use App\Model\NoteModel;
 
 abstract class AbstractController
 {
@@ -20,7 +21,7 @@ abstract class AbstractController
 
     private static array $configuration = [];
 
-    protected Database $database;
+    protected NoteModel $noteModel;
     protected Request $request;
     protected View $view;
 
@@ -34,7 +35,7 @@ abstract class AbstractController
         if (empty(self::$configuration['db'])) {
             throw new ConfigurationException('Configuration error');
         }
-        $this->database = new Database(self::$configuration['db']);
+        $this->noteModel = new NoteModel(self::$configuration['db']);
 
         $this->request = $request;
         $this->view = new View();

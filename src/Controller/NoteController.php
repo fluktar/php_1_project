@@ -16,7 +16,7 @@ class  NoteController extends AbstractController
         'title' => $this->request->postParam('title'),
         'description' => $this->request->postParam('description'),
       ];
-      $this->database->createNote($noteData);
+      $this->noteModel->createNote($noteData);
       $this->redirect('/', ['before' => 'created']);
     }
     $this->view->render(
@@ -44,11 +44,11 @@ class  NoteController extends AbstractController
     };
 
     if ($phrase) {
-      $noteList = $this->database->searchNotes($phrase, $pageNumber, $pageSize, $sortBy, $sortOrder);
-      $notes = $this->database->getSearchCount($phrase);
+      $noteList = $this->noteModel->searchNotes($phrase, $pageNumber, $pageSize, $sortBy, $sortOrder);
+      $notes = $this->noteModel->getSearchCount($phrase);
     } else {
-      $noteList = $this->database->getNotes($pageNumber, $pageSize, $sortBy, $sortOrder);
-      $notes = $this->database->getCount();
+      $noteList = $this->noteModel->getNotes($pageNumber, $pageSize, $sortBy, $sortOrder);
+      $notes = $this->noteModel->getCount();
     }
 
 
@@ -82,7 +82,7 @@ class  NoteController extends AbstractController
         'title' => $this->request->postParam('title'),
         'description' => $this->request->postParam('description'),
       ];
-      $this->database->editNote(
+      $this->noteModel->editNote(
         (int)
         $noteId,
         $noteData
@@ -98,7 +98,7 @@ class  NoteController extends AbstractController
   {
     if ($this->request->isPost()) {
       $id = (int) $this->request->postParam('id');
-      $this->database->deleteNote($id);
+      $this->noteModel->deleteNote($id);
       $this->redirect('/', ['before' => 'deleted']);
     }
     $this->view->render(
@@ -112,7 +112,7 @@ class  NoteController extends AbstractController
     if (!$noteId) {
       $this->redirect('/', ['error' => 'missingNoteId']);
     }
-    $note = $this->database->getNote($noteId);
+    $note = $this->noteModel->getNote($noteId);
 
     return $note;
   }
