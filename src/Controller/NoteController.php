@@ -112,11 +112,8 @@ class  NoteController extends AbstractController
     if (!$noteId) {
       $this->redirect('/', ['error' => 'missingNoteId']);
     }
-    try {
-      $note = $this->database->getNote($noteId);
-    } catch (NotFoundException $th) {
-      $this->redirect('/', ['error' => 'noteNotFound']);
-    }
+    $note = $this->database->getNote($noteId);
+
     return $note;
   }
 }

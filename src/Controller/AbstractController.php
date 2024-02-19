@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Request;
-use App\Database;
+use App\Model\Database;
 use App\View;
 
 require_once("src/Exception/ConfigurationException.php");
 
 use App\Exception\ConfigurationException;
+use App\Exception\NotFoundException;
 use App\Exception\StorageException;
 
 abstract class AbstractController
@@ -47,15 +48,12 @@ abstract class AbstractController
             if (!method_exists($this, $action)) {
                 $action = self::DEFAULT_ACTION . 'Action';
             }
-
-
-            throw new StorageException('Testowa wiaodmość błędu StorageException');
-            exit;
-
-
             $this->$action();
         } catch (StorageException $th) {
+            // Log::error($th->getPrevios());
             $this->view->render('error', ['message' => $th->getMessage()]);
+        } catch (NotFoundException $th) {
+            $this->redirect('/', ['error' => 'noteNotFound']);
         }
     }
 
