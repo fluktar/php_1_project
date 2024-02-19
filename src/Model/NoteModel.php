@@ -12,11 +12,11 @@ use PDO;
 
 use Throwable;
 
-class NoteModel extends AbstractModel
+class NoteModel extends AbstractModel implements ModelInterface
 {
 
 
-  public function getNote(int $id): array
+  public function get(int $id): array
   {
     try {
 
@@ -35,7 +35,7 @@ class NoteModel extends AbstractModel
   }
 
 
-  public function searchNotes(
+  public function search(
     string $phrase,
     int $pageNumber,
     int $pageSize,
@@ -45,7 +45,7 @@ class NoteModel extends AbstractModel
     return $this->findBy($phrase, $pageNumber, $pageSize, $sortBy, $sortOrder);
   }
 
-  public function getSearchCount(string $phrase): int
+  public function searchCount(string $phrase): int
   {
     try {
 
@@ -64,7 +64,7 @@ class NoteModel extends AbstractModel
     }
   }
 
-  public function getNotes(
+  public function list(
     int $pageNumber,
     int $pageSize,
     string $sortBy,
@@ -73,7 +73,7 @@ class NoteModel extends AbstractModel
     return $this->findBy(null, $pageNumber, $pageSize, $sortBy, $sortOrder);
   }
 
-  public function getCount(): int
+  public function count(): int
   {
     try {
 
@@ -91,7 +91,8 @@ class NoteModel extends AbstractModel
     }
   }
 
-  public function createNote(array $data): void
+
+  public function create(array $data): void
   {
     try {
       $title = $this->conn->quote($data['title']);
@@ -109,7 +110,7 @@ class NoteModel extends AbstractModel
     }
   }
 
-  public function editNote(int $id, array $data): void
+  public function edit(int $id, array $data): void
   {
     try {
       $title = $this->conn->quote($data['title']);
@@ -124,7 +125,7 @@ class NoteModel extends AbstractModel
       throw new StorageException('Nie udało się edytować notatki', 400, $e);
     }
   }
-  public function deleteNote(int $id): void
+  public function delete(int $id): void
   {
     try {
       $query = "DELETE FROM notes WHERE id = $id LIMIT 1";
@@ -169,6 +170,7 @@ class NoteModel extends AbstractModel
       ORDER BY $sortBy $sortOrder
       LIMIT $offset, $limit";
       $result = $this->conn->query($query,);
+
       return  $result->fetchAll(PDO::FETCH_ASSOC);
     } catch (Throwable $th) {
       throw new StorageException('Nie udało się pobrać notatek', 400, $th);

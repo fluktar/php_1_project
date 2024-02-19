@@ -97,7 +97,7 @@ form .field-textarea {
 
 form input[type="submit"],
 form input[type="button"] {
-  background: rgb(49, 217, 223);
+  background: cadetblue;
 
   border: none;
   color: #fff;
@@ -188,7 +188,7 @@ form > div:first-child > label:first-child > input:focus {
 
 .footer {
   margin-top: 20px;
-  background-color: rgb(67, 230, 235);
+  background-color: cadetblue;
   padding-bottom: 30px;
 }
 
@@ -208,7 +208,7 @@ table {
 
 .tbl-header {
   margin-top: 20px;
-  background-color: rgb(51, 195, 200);
+  background-color: cadetblue;
   color: white;
 }
 
@@ -262,7 +262,7 @@ tr > td:nth-child(3) {
 
 .error {
   /* margin: 0 10px 25px 10px; */
-  /* margin-top: 0; */
+  /* margin-top:0; */
   text-align: center;
   font-weight: 700;
   color: #ff0000;
@@ -312,7 +312,7 @@ button {
 }
 
 button:hover {
-  background-color: #11323a;
+  background-color: #4691a4;
 }
 
 form.note-form li label {
@@ -334,6 +334,11 @@ form.note-form textarea {
 .delete ul,
 .show ul {
   list-style: none;
+}
+
+.delete ul li,
+.show ul li {
+  margin-top: 10px;
 }
 
 .delete button,
