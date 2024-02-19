@@ -44,12 +44,18 @@
     $size = $page['size'] ?? 10;
     $currentPage = $page['number'] ?? 1;
     $pages = $page['pages'] ?? 1;
+    $phrase = $params['phrase'] ?? null;
+
     ?>
 
 
 
     <div>
       <form action="/phptesty/" method="GET" class="settings-form">
+        <div>
+          <label for="">Wyszukaj: <input type="text" name="phrase"></label>
+
+        </div>
         <div>
           <div>Sortuj po:</div>
           <label for="">Tytule:
@@ -109,7 +115,7 @@
         </tbody>
       </table>
     </div>
-    <?php $paginationUrl =  "&pagesize=$size?sortby=$by&sortorder-$order";  ?>
+    <?php $paginationUrl =  "&phrase=$phrase&pagesize=$size?sortby=$by&sortorder-$order";  ?>
     <ul class="pagination">
       <?php if ($currentPage !== 1) :  ?>
         <li>

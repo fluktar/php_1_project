@@ -97,7 +97,7 @@ form .field-textarea {
 
 form input[type="submit"],
 form input[type="button"] {
-  background: cadetblue;
+  background: rgb(49, 217, 223);
 
   border: none;
   color: #fff;
@@ -188,7 +188,7 @@ form > div:first-child > label:first-child > input:focus {
 
 .footer {
   margin-top: 20px;
-  background-color: cadetblue;
+  background-color: rgb(67, 230, 235);
   padding-bottom: 30px;
 }
 
@@ -208,7 +208,7 @@ table {
 
 .tbl-header {
   margin-top: 20px;
-  background-color: cadetblue;
+  background-color: rgb(51, 195, 200);
   color: white;
 }
 
@@ -312,7 +312,7 @@ button {
 }
 
 button:hover {
-  background-color: #4691a4;
+  background-color: #11323a;
 }
 
 form.note-form li label {

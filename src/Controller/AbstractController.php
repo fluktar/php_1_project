@@ -11,6 +11,7 @@ use App\View;
 require_once("src/Exception/ConfigurationException.php");
 
 use App\Exception\ConfigurationException;
+use App\Exception\StorageException;
 
 abstract class AbstractController
 {
@@ -40,11 +41,22 @@ abstract class AbstractController
 
     final public function run(): void
     {
-        $action = $this->action() . 'Action';
-        if (!method_exists($this, $action)) {
-            $action = self::DEFAULT_ACTION . 'Action';
+
+        try {
+            $action = $this->action() . 'Action';
+            if (!method_exists($this, $action)) {
+                $action = self::DEFAULT_ACTION . 'Action';
+            }
+
+
+            throw new StorageException('Testowa wiaodmość błędu StorageException');
+            exit;
+
+
+            $this->$action();
+        } catch (StorageException $th) {
+            $this->view->render('error', ['message' => $th->getMessage()]);
         }
-        $this->$action();
     }
 
     final protected function redirect(string $to, array $params): void
